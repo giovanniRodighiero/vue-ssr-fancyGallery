@@ -1,9 +1,10 @@
 <template>
   <div>
     <p>Hello {{ name }}</p>
-    <p>Welcome to China!</p>
+    <p></p>
   </div>
 </template>
+
 <script>
 export default {
   props: [ 'name' ],
