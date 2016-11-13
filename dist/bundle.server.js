@@ -68,6 +68,7 @@ module.exports =
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var app = new _vue2.default(_app2.default);
+
 	// the default export should be a function
 	// which will receive the context of the render call
 	;
@@ -5813,7 +5814,7 @@ module.exports =
 
 	for (var i = 0; i < 5; i++) {
 	  photos.push({
-	    imgSrc: 'https://unsplash.it/' + (900 + i) + '/' + (500 + i) + '?random',
+	    imgSrc: 'https://unsplash.it/' + (900 + i) + '/' + (500 + i) + '?random', // the + i thing is to get different images
 	    text: {
 	      preview: {
 	        content: 'Preview' + i,
@@ -6086,7 +6087,9 @@ module.exports =
 	    }
 	  })])
 	}},staticRenderFns: [function (){with(this) {
-	  return _h('h1', ["Fancy Gallery !"])
+	  return _h('h1', {
+	    staticClass: "title"
+	  }, ["Fancy Gallery !"])
 	}}]}
 
 /***/ }

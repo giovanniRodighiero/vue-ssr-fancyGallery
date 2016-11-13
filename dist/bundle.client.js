@@ -56,11 +56,9 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var VueApp = _vue2.default.extend(_app2.default);
+	var app = new _vue2.default(_app2.default);
 
-	new VueApp({
-	  el: '.my-app'
-	});
+	app.$mount('.my-app');
 
 /***/ },
 /* 1 */
@@ -6006,10 +6004,10 @@
 
 	exports = module.exports = __webpack_require__(6)();
 	// imports
-
+	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Ranga:400,700);", ""]);
 
 	// module
-	exports.push([module.id, "\nhtml, body {\n  margin: 0;\n  padding: 0;\n}\n.my-app {\n  width: 100%;\n}\n", ""]);
+	exports.push([module.id, "\nhtml, body {\n  margin: 0;\n  padding: 0;\n  font-family: 'Ranga', cursive;\n}\n.my-app {\n  width: 100%;\n  text-align: center;\n}\n", ""]);
 
 	// exports
 
@@ -6322,7 +6320,7 @@
 
 	for (var i = 0; i < 5; i++) {
 	  photos.push({
-	    imgSrc: 'https://unsplash.it/' + (900 + i) + '/' + (500 + i) + '?random',
+	    imgSrc: 'https://unsplash.it/' + (900 + i) + '/' + (500 + i) + '?random', // the + i thing is to get different images
 	    text: {
 	      preview: {
 	        content: 'Preview' + i,
@@ -6439,10 +6437,10 @@
 
 	exports = module.exports = __webpack_require__(6)();
 	// imports
-	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Ranga:400,700);", ""]);
+
 
 	// module
-	exports.push([module.id, "\n.text, .textTop, .textCenter, .textBottom, .textPreview {\n  text-align: center;\n  margin: 0;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n}\n.fancyGallery {\n  display: flex;\n  height: 500px;\n}\n.photo {\n  margin: 0;\n  height: 100%;\n  flex-grow: 1;\n  flex-basis: 0;\n}\n.photo:hover {\n    cursor: pointer;\n}\n.image {\n  background-size: cover;\n  background-repeat: no-repeat;\n  width: 100%;\n  height: 100%;\n}\n.textWrapper {\n  height: 100%;\n  margin: 0 5px;\n  font-family: 'Ranga', cursive;\n  display: flex;\n  flex-direction: column;\n}\n.textTop {\n  flex-grow: 3;\n  font-size: 2em;\n}\n.textCenter {\n  font-size: 2em;\n  flex-grow: 1;\n  text-transform: uppercase;\n}\n.textBottom {\n  flex-grow: 3;\n  font-size: 2em;\n}\n.textPreview {\n  flex-grow: 1;\n}\n.myParagraph {\n  margin: 0;\n}\n.hidden {\n  display: none;\n}\n.fade-preview-enter-active, .fade-preview-leave-active {\n  transition: opacity 1s;\n}\n.fade-preview-enter, .fade-preview-leave-active {\n  opacity: 0;\n}\n.fade-center-enter-active, .fade-center-leave-active {\n  transition: opacity .5s;\n}\n.fade-center-enter, .fade-center-leave-active {\n  opacity: 0;\n}\n.fade-top-enter-active, .fade-top-leave-active, .fade-bottom-enter-active, .fade-bottom-leave-active {\n  transition: opacity 1s;\n}\n.fade-top-enter, .fade-top-leave-active, .fade-bottom-enter, .fade-bottom-leave-active {\n  opacity: 0;\n}\n", ""]);
+	exports.push([module.id, "\n.text, .textTop, .textCenter, .textBottom, .textPreview {\n  text-align: center;\n  margin: 0;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n}\n.fancyGallery {\n  display: flex;\n  height: 500px;\n}\n.photo {\n  margin: 0;\n  height: 100%;\n  flex-grow: 1;\n  flex-basis: 0;\n}\n.photo:hover {\n    cursor: pointer;\n}\n.image {\n  background-size: cover;\n  background-repeat: no-repeat;\n  background-position: center;\n  width: 100%;\n  height: 100%;\n}\n.textWrapper {\n  height: 100%;\n  margin: 0 5px;\n  display: flex;\n  flex-direction: column;\n}\n.textTop {\n  flex-grow: 3;\n  font-size: 2em;\n}\n.textCenter {\n  font-size: 2em;\n  flex-grow: 1;\n  text-transform: uppercase;\n}\n.textBottom {\n  flex-grow: 3;\n  font-size: 2em;\n}\n.textPreview {\n  flex-grow: 1;\n}\n.myParagraph {\n  margin: 0;\n}\n.hidden {\n  display: none;\n}\n.fade-preview-enter-active, .fade-preview-leave-active {\n  transition: opacity 1s;\n}\n.fade-preview-enter, .fade-preview-leave-active {\n  opacity: 0;\n}\n.fade-center-enter-active, .fade-center-leave-active {\n  transition: opacity .5s;\n}\n.fade-center-enter, .fade-center-leave-active {\n  opacity: 0;\n}\n.fade-top-enter-active, .fade-top-leave-active, .fade-bottom-enter-active, .fade-bottom-leave-active {\n  transition: opacity 1s;\n}\n.fade-top-enter, .fade-top-leave-active, .fade-bottom-enter, .fade-bottom-leave-active {\n  opacity: 0;\n}\n", ""]);
 
 	// exports
 
@@ -6656,7 +6654,9 @@
 	    }
 	  })])
 	}},staticRenderFns: [function (){with(this) {
-	  return _h('h1', ["Fancy Gallery !"])
+	  return _h('h1', {
+	    staticClass: "title"
+	  }, ["Fancy Gallery !"])
 	}}]}
 	if (false) {
 	  module.hot.accept()

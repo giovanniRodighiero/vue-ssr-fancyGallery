@@ -1,8 +1,7 @@
 import Vue from 'vue';
 import App from './app.vue';
 
-const VueApp = Vue.extend(App);
+const app = new Vue(App);
 
-new VueApp({
-  el: '.my-app',
-});
+
+app.$mount('.my-app');

@@ -1,7 +1,7 @@
 
 <template>
   <div class="my-app">
-    <h1>Fancy Gallery !</h1>
+    <h1 class="title">Fancy Gallery !</h1>
     <FancyGallery
       v-bind:photos="photos"
       v-bind:config="config"
@@ -15,7 +15,7 @@ const photos = [];
 for (let i = 0; i < 5; i++) {
   photos.push(
      {
-      imgSrc:  `https://unsplash.it/${900 + i}/${500 + i}?random`,
+      imgSrc:  `https://unsplash.it/${900 + i}/${500 + i}?random`, // the + i thing is to get different images
       text: {
         preview:{
           content: 'Preview' + i,
@@ -55,10 +55,12 @@ export default {
 };
 </script>
 <style lang="sass?indentedSyntax">
+@import url('https://fonts.googleapis.com/css?family=Ranga:400,700')
 html, body
   margin: 0
   padding: 0
+  font-family: 'Ranga', cursive
 .my-app
   width: 100%
-
+  text-align: center
 </style>
