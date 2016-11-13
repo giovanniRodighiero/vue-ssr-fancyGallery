@@ -13,6 +13,7 @@ It is a simple app that shows a gallery of random images with a fancy effect for
 ## Usage
 Download the required dependencies `yarn install`
 
+
 Build the two bundle with:
 * `webpack --config webpack/webpack.config.server.js` for the server
 * `webpack --config webpack/webpack.config.client.js` for the client
