@@ -6324,11 +6324,22 @@
 	  photos.push({
 	    imgSrc: 'https://unsplash.it/' + (900 + i) + '/' + (500 + i) + '?random',
 	    text: {
-	      preview: 'Preview' + i,
-	      center: ' Fancy main text content for my fancy gallery !',
-	      top: 'Fancy header',
-	      bottom: 'Fancy footer',
-	      color: '#eee'
+	      preview: {
+	        content: 'Preview' + i,
+	        color: '#eee'
+	      },
+	      center: {
+	        content: 'Fancy main text content for my fancy gallery !',
+	        color: 'red'
+	      },
+	      top: {
+	        content: 'Fancy header',
+	        color: '#fff'
+	      },
+	      bottom: {
+	        content: 'Fancy footer',
+	        color: 'white'
+	      }
 	    },
 	    isEnlarged: false,
 	    flexGrow: 1
@@ -6431,7 +6442,7 @@
 	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Ranga:400,700);", ""]);
 
 	// module
-	exports.push([module.id, "\n.text, .textTop, .textCenter, .textBottom, .textPreview {\n  text-align: center;\n  margin: 0;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n}\n.fancyGallery {\n  display: flex;\n  height: 500px;\n}\n.photo {\n  margin: 0;\n  height: 100%;\n  flex-grow: 1;\n}\n.photo:hover {\n    cursor: pointer;\n}\n.image {\n  background-size: cover;\n  background-repeat: no-repeat;\n  width: 100%;\n  height: 100%;\n}\n.textWrapper {\n  height: 100%;\n  width: 90%;\n  margin: 0 auto;\n  font-family: 'Ranga', cursive;\n  display: flex;\n  flex-direction: column;\n}\n.textTop {\n  flex-grow: 3;\n  font-size: 2em;\n}\n.textCenter {\n  font-size: 2em;\n  flex-grow: 1;\n  text-transform: uppercase;\n}\n.textBottom {\n  flex-grow: 3;\n  font-size: 2em;\n}\n.textPreview {\n  flex-grow: 1;\n}\n.myParagraph {\n  margin: 0;\n}\n.test {\n  font-size: 2em;\n}\n.fade-top-enter-active, .fade-top-leave-active, .fade-bottom-enter-active, .fade-bottom-leave-active {\n  transition: opacity 1s;\n}\n.fade-top-enter, .fade-top-leave-active, .fade-bottom-enter, .fade-bottom-leave-active {\n  opacity: 0;\n}\n.fade-center-enter-active, .fade-center-leave-active {\n  transition: opacity .5s;\n}\n.fade-center-enter, .fade-center-leave-active {\n  opacity: 0;\n}\n.fade-preview-enter-active, .fade-preview-leave-active {\n  transition: opacity 1s;\n}\n.fade-preview-enter, .fade-preview-leave-active {\n  opacity: 0;\n}\n", ""]);
+	exports.push([module.id, "\n.text, .textTop, .textCenter, .textBottom, .textPreview {\n  text-align: center;\n  margin: 0;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n}\n.fancyGallery {\n  display: flex;\n  height: 500px;\n}\n.photo {\n  margin: 0;\n  height: 100%;\n  flex-grow: 1;\n  flex-basis: 0;\n}\n.photo:hover {\n    cursor: pointer;\n}\n.image {\n  background-size: cover;\n  background-repeat: no-repeat;\n  width: 100%;\n  height: 100%;\n}\n.textWrapper {\n  height: 100%;\n  margin: 0 5px;\n  font-family: 'Ranga', cursive;\n  display: flex;\n  flex-direction: column;\n}\n.textTop {\n  flex-grow: 3;\n  font-size: 2em;\n}\n.textCenter {\n  font-size: 2em;\n  flex-grow: 1;\n  text-transform: uppercase;\n}\n.textBottom {\n  flex-grow: 3;\n  font-size: 2em;\n}\n.textPreview {\n  flex-grow: 1;\n}\n.myParagraph {\n  margin: 0;\n}\n.hidden {\n  display: none;\n}\n.fade-preview-enter-active, .fade-preview-leave-active {\n  transition: opacity 1s;\n}\n.fade-preview-enter, .fade-preview-leave-active {\n  opacity: 0;\n}\n.fade-center-enter-active, .fade-center-leave-active {\n  transition: opacity .5s;\n}\n.fade-center-enter, .fade-center-leave-active {\n  opacity: 0;\n}\n.fade-top-enter-active, .fade-top-leave-active, .fade-bottom-enter-active, .fade-bottom-leave-active {\n  transition: opacity 1s;\n}\n.fade-top-enter, .fade-top-leave-active, .fade-bottom-enter, .fade-bottom-leave-active {\n  opacity: 0;\n}\n", ""]);
 
 	// exports
 
@@ -6485,7 +6496,7 @@
 
 	      this.photos.map(function (photo, index) {
 	        photo.isEnlarged = false;
-	        _tweenLite2.default.to(photo, 1, {
+	        if (photo.flexGrow > 1) _tweenLite2.default.to(photo, 1, {
 	          flexGrow: 1,
 	          onComplete: _this.reductionComplete,
 	          onCompleteParams: [index]
@@ -6493,9 +6504,9 @@
 	      });
 	    },
 	    switchText: function switchText(tween, index) {
-	      if (tween.progress() > 0.8 && !this.photos[index].busy) {
+	      if (tween.progress() > 0.5 && !this.photos[index].busy) {
 	        this.photos[index].busy = true;
-	        //this.photos[index].isEnlarged = true;
+	        this.photos[index].isEnlarged = true;
 	      }
 	    },
 	    enlargementComplete: function enlargementComplete(index) {
@@ -6507,8 +6518,6 @@
 	  },
 	  computed: {}
 	}; //
-	//
-	//
 	//
 	//
 	//
@@ -6589,44 +6598,43 @@
 	      staticClass: "textWrapper"
 	    }, [_h('transition', {
 	      attrs: {
-	        "name": "fade-top"
+	        "name": "fade-bottom"
 	      }
 	    }, [(photo.isEnlarged) ? _h('div', {
 	      staticClass: "textTop"
 	    }, [_h('p', {
-	      staticClass: "myParagraph"
-	    }, [_s(photo.text.top)])]) : _e()]), " ", _h('transition', {
+	      staticClass: "myParagraph",
+	      style: (("color: " + (photo.text.top.color) + ";"))
+	    }, [_s(photo.text.top.content)])]) : _e()]), " ", _h('transition', {
 	      attrs: {
-	        "name": "fade-center"
+	        "name": "fade-bottom"
 	      }
 	    }, [(photo.isEnlarged) ? _h('div', {
 	      staticClass: "textCenter"
 	    }, [_h('p', {
 	      staticClass: "myParagraph",
-	      style: (("color: " + (photo.text.color) + ";"))
-	    }, [_s(photo.text.center)])]) : _e()]), " ", _h('transition', {
+	      style: (("color: " + (photo.text.center.color) + ";"))
+	    }, [_s(photo.text.center.content)])]) : _e()]), " ", _h('transition', {
 	      attrs: {
 	        "name": "fade-bottom"
 	      }
 	    }, [(photo.isEnlarged) ? _h('div', {
 	      staticClass: "textBottom"
 	    }, [_h('p', {
-	      staticClass: "myParagraph"
-	    }, [_s(photo.text.bottom)])]) : _e()]), " ", _h('transition', {
+	      staticClass: "myParagraph",
+	      style: (("color: " + (photo.text.bottom.color) + ";"))
+	    }, [_s(photo.text.bottom.content)])]) : _e()]), " ", _h('transition', {
 	      attrs: {
 	        "name": "fade-preview"
 	      }
 	    }, [(photo.previewActive) ? _h('div', {
 	      staticClass: "textPreview"
 	    }, [_h('p', {
-	      staticClass: "myParagraph"
-	    }, [_s(photo.text.preview)]), " ", _m(0, true)]) : _e()])])])])
+	      staticClass: "myParagraph",
+	      style: (("color: " + (photo.text.preview.color) + ";"))
+	    }, [_s(photo.text.preview.content)])]) : _e()])])])])
 	  })])
-	}},staticRenderFns: [function (){with(this) {
-	  return _h('p', {
-	    staticClass: "test"
-	  }, ["Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."])
-	}}]}
+	}},staticRenderFns: []}
 	if (false) {
 	  module.hot.accept()
 	  if (module.hot.data) {

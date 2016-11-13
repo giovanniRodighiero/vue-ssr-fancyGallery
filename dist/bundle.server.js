@@ -5815,11 +5815,22 @@ module.exports =
 	  photos.push({
 	    imgSrc: 'https://unsplash.it/' + (900 + i) + '/' + (500 + i) + '?random',
 	    text: {
-	      preview: 'Preview' + i,
-	      center: ' Fancy main text content for my fancy gallery !',
-	      top: 'Fancy header',
-	      bottom: 'Fancy footer',
-	      color: '#eee'
+	      preview: {
+	        content: 'Preview' + i,
+	        color: '#eee'
+	      },
+	      center: {
+	        content: 'Fancy main text content for my fancy gallery !',
+	        color: 'red'
+	      },
+	      top: {
+	        content: 'Fancy header',
+	        color: '#fff'
+	      },
+	      bottom: {
+	        content: 'Fancy footer',
+	        color: 'white'
+	      }
 	    },
 	    isEnlarged: false,
 	    flexGrow: 1
@@ -5922,7 +5933,7 @@ module.exports =
 
 	      this.photos.map(function (photo, index) {
 	        photo.isEnlarged = false;
-	        _tweenLite2.default.to(photo, 1, {
+	        if (photo.flexGrow > 1) _tweenLite2.default.to(photo, 1, {
 	          flexGrow: 1,
 	          onComplete: _this.reductionComplete,
 	          onCompleteParams: [index]
@@ -5930,9 +5941,9 @@ module.exports =
 	      });
 	    },
 	    switchText: function switchText(tween, index) {
-	      if (tween.progress() > 0.8 && !this.photos[index].busy) {
+	      if (tween.progress() > 0.5 && !this.photos[index].busy) {
 	        this.photos[index].busy = true;
-	        //this.photos[index].isEnlarged = true;
+	        this.photos[index].isEnlarged = true;
 	      }
 	    },
 	    enlargementComplete: function enlargementComplete(index) {
@@ -5944,8 +5955,6 @@ module.exports =
 	  },
 	  computed: {}
 	}; //
-	//
-	//
 	//
 	//
 	//
@@ -6025,44 +6034,43 @@ module.exports =
 	      staticClass: "textWrapper"
 	    }, [_h('transition', {
 	      attrs: {
-	        "name": "fade-top"
+	        "name": "fade-bottom"
 	      }
 	    }, [(photo.isEnlarged) ? _h('div', {
 	      staticClass: "textTop"
 	    }, [_h('p', {
-	      staticClass: "myParagraph"
-	    }, [_s(photo.text.top)])]) : _e()]), " ", _h('transition', {
+	      staticClass: "myParagraph",
+	      style: (("color: " + (photo.text.top.color) + ";"))
+	    }, [_s(photo.text.top.content)])]) : _e()]), " ", _h('transition', {
 	      attrs: {
-	        "name": "fade-center"
+	        "name": "fade-bottom"
 	      }
 	    }, [(photo.isEnlarged) ? _h('div', {
 	      staticClass: "textCenter"
 	    }, [_h('p', {
 	      staticClass: "myParagraph",
-	      style: (("color: " + (photo.text.color) + ";"))
-	    }, [_s(photo.text.center)])]) : _e()]), " ", _h('transition', {
+	      style: (("color: " + (photo.text.center.color) + ";"))
+	    }, [_s(photo.text.center.content)])]) : _e()]), " ", _h('transition', {
 	      attrs: {
 	        "name": "fade-bottom"
 	      }
 	    }, [(photo.isEnlarged) ? _h('div', {
 	      staticClass: "textBottom"
 	    }, [_h('p', {
-	      staticClass: "myParagraph"
-	    }, [_s(photo.text.bottom)])]) : _e()]), " ", _h('transition', {
+	      staticClass: "myParagraph",
+	      style: (("color: " + (photo.text.bottom.color) + ";"))
+	    }, [_s(photo.text.bottom.content)])]) : _e()]), " ", _h('transition', {
 	      attrs: {
 	        "name": "fade-preview"
 	      }
 	    }, [(photo.previewActive) ? _h('div', {
 	      staticClass: "textPreview"
 	    }, [_h('p', {
-	      staticClass: "myParagraph"
-	    }, [_s(photo.text.preview)]), " ", _m(0, true)]) : _e()])])])])
+	      staticClass: "myParagraph",
+	      style: (("color: " + (photo.text.preview.color) + ";"))
+	    }, [_s(photo.text.preview.content)])]) : _e()])])])])
 	  })])
-	}},staticRenderFns: [function (){with(this) {
-	  return _h('p', {
-	    staticClass: "test"
-	  }, ["Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."])
-	}}]}
+	}},staticRenderFns: []}
 
 /***/ },
 /* 9 */

@@ -17,11 +17,22 @@ for (let i = 0; i < 5; i++) {
      {
       imgSrc:  `https://unsplash.it/${900 + i}/${500 + i}?random`,
       text: {
-        preview: 'Preview' + i,
-        center: ' Fancy main text content for my fancy gallery !',
-        top: 'Fancy header',
-        bottom: 'Fancy footer',
-        color: '#eee'
+        preview:{
+          content: 'Preview' + i,
+          color: '#eee'
+        },
+        center:{
+          content: 'Fancy main text content for my fancy gallery !',
+          color: 'red'
+        },
+        top:{
+          content: 'Fancy header',
+          color: '#fff'
+        },
+        bottom:{
+          content: 'Fancy footer',
+          color: 'white'
+        }
       },
       isEnlarged: false,
       flexGrow: 1
