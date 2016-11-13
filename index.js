@@ -5,6 +5,7 @@ const vueServerRenderer = require('vue-server-renderer');
 
 const app = express();
 
+
 const serverBundleFile = fs.readFileSync('./dist/bundle.server.js', 'utf8');
 const bundleRenderer = vueServerRenderer.createBundleRenderer(serverBundleFile);
 
