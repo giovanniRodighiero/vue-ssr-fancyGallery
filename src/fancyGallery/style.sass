@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css?family=Ranga:400,700')
+.text
+  text-align: center
+  margin: 0
+  display: flex
+  flex-direction: column
+  justify-content: center
+
+.fancyGallery
+  display: flex
+  height: 500px
+.photo
+  &:hover
+    cursor: pointer
+  margin: 0
+  height: 100%
+  flex-grow: 1
+.image
+  background-size: cover
+  background-repeat: no-repeat
+  width: 100%
+  height: 100%
+.textWrapper
+  height: 100%
+  width: 90%
+  margin: 0 auto
+  font-family: 'Ranga', cursive
+  font-size 16px
+  display: flex
+  flex-direction: column
+.textTop
+  @extend .text
+  flex-grow: 3
+  font-size: 2em
+.textCenter
+  @extend .text
+  font-size: 2em
+  flex-grow: 1
+  text-transform: uppercase
+.textBottom
+  @extend .text
+  flex-grow: 3
+  font-size: 2em
+.textPreview
+  @extend .text
+  flex-grow: 1
+.myParagraph
+  margin: 0
+.test
+  font-size: 2em
+.fade-top-enter-active, .fade-top-leave-active, .fade-bottom-enter-active, .fade-bottom-leave-active
+  transition: opacity 1s
+.fade-top-enter, .fade-top-leave-active, .fade-bottom-enter, .fade-bottom-leave-active
+  opacity: 0
+
+.fade-center-enter-active, .fade-center-leave-active
+  transition: opacity .5s
+.fade-center-enter, .fade-center-leave-active
+  opacity: 0
+
+.fade-preview-enter-active, .fade-preview-leave-active
+  transition: opacity 1s
+.fade-preview-enter, .fade-preview-leave-active
+  opacity: 0

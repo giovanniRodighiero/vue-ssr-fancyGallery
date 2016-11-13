@@ -6,6 +6,9 @@ module.exports = {
     path: path.join(projectRoot, 'dist'),
     filename: 'bundle.client.js',
   },
+  resolve: {
+    alias:{tweenLite: 'gsap/src/minified/TweenLite.min.js'}
+  },
   module: {
     loaders: [
       {
